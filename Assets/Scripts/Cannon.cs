@@ -3,8 +3,10 @@ using UnityEngine;
 public class Cannon : MonoBehaviour
 {
     [SerializeField] private Camera _playerCamera;
+
+    [Header("Barrel settings")]
     [SerializeField] private Transform _barrel;
-    [SerializeField] private float _aimSmoothing = 10.0f;
+    [SerializeField] private float _barrelAimSmoothing = 10.0f;
     [SerializeField] private Vector2 _barrelVerticalRotationConstraints;
 
     private float _targetVerticalRotation = 0.0f;
@@ -26,6 +28,6 @@ public class Cannon : MonoBehaviour
     private void VerticalAiming() {
         _targetVerticalRotation = Mathf.Clamp(_targetVerticalRotation + Input.mouseScrollDelta.y, _barrelVerticalRotationConstraints.x, _barrelVerticalRotationConstraints.y);
         var targetRotation = Quaternion.Euler(Vector3.right * _targetVerticalRotation);
-        _barrel.transform.localRotation = Quaternion.Lerp(_barrel.transform.localRotation, targetRotation, _aimSmoothing * Time.deltaTime);
+        _barrel.transform.localRotation = Quaternion.Lerp(_barrel.transform.localRotation, targetRotation, _barrelAimSmoothing * Time.deltaTime);
     }
 }

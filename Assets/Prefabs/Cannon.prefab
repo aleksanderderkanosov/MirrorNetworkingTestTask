@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7903458228342539014}
-  - component: {fileID: 4195281165674565534}
-  - component: {fileID: 6613764285591714211}
   - component: {fileID: 4055154060565861538}
   m_Layer: 0
   m_Name: Cannon
@@ -35,58 +33,6 @@ Transform:
   - {fileID: 105934012927816550}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4195281165674565534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6969090696782108403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  _assetId: 1194802027
-  serverOnly: 0
-  visibility: 0
-  hasSpawned: 0
---- !u!114 &6613764285591714211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6969090696782108403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a553cb17010b2403e8523b558bffbc14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 1
-  syncMode: 0
-  syncInterval: 0
-  target: {fileID: 7903458228342539014}
-  syncPosition: 0
-  syncRotation: 1
-  syncScale: 0
-  onlySyncOnChange: 1
-  compressRotation: 1
-  interpolatePosition: 1
-  interpolateRotation: 1
-  interpolateScale: 1
-  coordinateSpace: 0
-  sendIntervalMultiplier: 1
-  timelineOffset: 0
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  bufferResetMultiplier: 3
-  changedDetection: 1
-  positionSensitivity: 0.01
-  rotationSensitivity: 0.01
-  scaleSensitivity: 0.01
 --- !u!114 &4055154060565861538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerCamera: {fileID: 0}
   _barrel: {fileID: 6589094344012105308}
-  _aimSmoothing: 10
+  _barrelAimSmoothing: 10
   _barrelVerticalRotationConstraints: {x: -180, y: -90}
 --- !u!1001 &500712171090269325
 PrefabInstance:
