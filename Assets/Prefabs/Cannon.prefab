@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7903458228342539014}
   - component: {fileID: 4195281165674565534}
   - component: {fileID: 6613764285591714211}
+  - component: {fileID: 4055154060565861538}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -86,6 +87,22 @@ MonoBehaviour:
   positionSensitivity: 0.01
   rotationSensitivity: 0.01
   scaleSensitivity: 0.01
+--- !u!114 &4055154060565861538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6969090696782108403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc5846dd25c480c439c8101ec966c398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCamera: {fileID: 0}
+  _barrel: {fileID: 6589094344012105308}
+  _aimSmoothing: 10
+  _barrelVerticalRotationConstraints: {x: -180, y: -90}
 --- !u!1001 &500712171090269325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -177,6 +194,12 @@ PrefabInstance:
 --- !u!4 &105934012927816550 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 97b26c735cb696941a0a461706dc49e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 500712171090269325}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6589094344012105308 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -2484921068739079471, guid: 97b26c735cb696941a0a461706dc49e7,
     type: 3}
   m_PrefabInstance: {fileID: 500712171090269325}
   m_PrefabAsset: {fileID: 0}
