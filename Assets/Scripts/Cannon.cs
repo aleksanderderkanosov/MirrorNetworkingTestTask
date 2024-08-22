@@ -1,8 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 public class Cannon : MonoBehaviour
 {
     [SerializeField] private Camera _playerCamera;
+    [SerializeField] private NetworkPlayer _player;
     [SerializeField] private LayerMask _raycastLayerMask;
 
     [Header("Barrel settings")]
@@ -13,19 +15,22 @@ public class Cannon : MonoBehaviour
     [Header("Shoot settings")]
     [SerializeField] private Vector2 _shootForceLimits;
     [SerializeField] private float _forceIncreasePerSecond = 5.0f;
-    [SerializeField] private GameObject _ballPrefab;
+
 
     private float _targetVerticalRotation = 0.0f;
     private float _shootForce = 0.0f;
 
-    private void Start() {
+    private IEnumerator Start() {
         _shootForce = _shootForceLimits.x;
-    }
 
-    private void Update() {
-        Rotate();
-        VerticalAiming();
-        Shoot();
+        while (enabled) {
+            Rotate();
+            VerticalAiming();
+            Shoot();
+            yield return null;
+        }
+
+        yield return null;
     }
 
     private void Rotate() {
@@ -44,8 +49,7 @@ public class Cannon : MonoBehaviour
 
     private void Shoot() {
         if (Input.GetKeyUp(KeyCode.Mouse0)) {
-            var ball = Instantiate(_ballPrefab, _barrel.position, Quaternion.identity);
-            ball.GetComponent<Rigidbody>().AddForce(-_barrel.transform.up * _shootForce, ForceMode.Impulse);
+            _player.CmdShoot(_barrel.position, -_barrel.transform.up * _shootForce);
             _shootForce = _shootForceLimits.x;
             return;
         }
