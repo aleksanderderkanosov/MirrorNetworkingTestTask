@@ -46,6 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerCamera: {fileID: 0}
+  _shootForceLimits: {x: 15, y: 40}
+  _forceIncreasePerSecond: 10
+  _ballPrefab: {fileID: 6276607424656864224, guid: 5303dae843d54344ea888f5e89aa986c,
+    type: 3}
+  _raycastLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
   _barrel: {fileID: 6589094344012105308}
   _barrelAimSmoothing: 10
   _barrelVerticalRotationConstraints: {x: -180, y: -90}
