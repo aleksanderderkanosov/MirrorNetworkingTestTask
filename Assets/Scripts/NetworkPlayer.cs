@@ -4,8 +4,13 @@ using UnityEngine;
 public class NetworkPlayer : NetworkBehaviour
 {
     [SerializeField] private Cannon _cannon;
+    [SerializeField] private Goal _goal;
     [SerializeField] private Camera _playerCamera;
-    [SerializeField] private GameObject _ballPrefab;
+    [SerializeField] private Ball _ballPrefab;
+
+    [SyncVar(hook = nameof(UpdateScores))] private int _score = 0;
+
+    public int Score { get => _score; set => _score = value; }
 
     public override void OnStartLocalPlayer() {
         base.OnStartLocalPlayer();
@@ -16,6 +21,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void EnableComponentsOnLocalPlayer() {
         _cannon.enabled = true;
+        _goal.enabled = true;
         _playerCamera.enabled = true;
         _playerCamera.GetComponent<AudioListener>().enabled = true;
     }
@@ -28,10 +34,28 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    private void UpdateScores(int oldValue, int newValue) {
+        print($"Scores: {newValue}");
+    } 
+
     [Command]
-    public void CmdShoot(Vector3 origin, Vector3 force) {
+    public void CmdShoot(Vector3 origin, Vector3 force, NetworkConnectionToClient sender = null) {
         var ball = Instantiate(_ballPrefab, origin, Quaternion.identity);
-        NetworkServer.Spawn(ball);
+        NetworkServer.Spawn(ball.gameObject);
         ball.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+        ball.Owner = sender.identity.GetComponent<NetworkPlayer>();
+    }
+
+    [Command]
+    public void CmdGoal(GameObject ball, NetworkConnectionToClient sender = null) {
+        NetworkPlayer _loser = sender.identity.GetComponent<NetworkPlayer>();
+        _loser.Score--;
+
+        NetworkPlayer _scorer = ball.GetComponent<Ball>().Owner;
+        if (_loser != _scorer) {
+            _scorer.Score++;
+        }
+
+        NetworkServer.Destroy(ball);
     }
 }

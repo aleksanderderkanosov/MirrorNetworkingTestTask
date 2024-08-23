@@ -10,7 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5883268306147721663}
   - component: {fileID: 5577121121422371911}
-  m_Layer: 0
+  - component: {fileID: 2862308486643475315}
+  - component: {fileID: 1393078376952754079}
+  - component: {fileID: 6743608977985535038}
+  - component: {fileID: 1679955129542935365}
+  - component: {fileID: 7064701197225518415}
+  m_Layer: 2
   m_Name: Goal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,8 +50,114 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24285adf0877d594a839db029ef54237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _goalTrigger: {fileID: 2862308486643475315}
   _speed: 3
-  _movingXLimits: {x: -15, y: 15}
+  _movingXLimits: {x: -11, y: 11}
+--- !u!65 &2862308486643475315
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7870594375749247816}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 5.105054, y: 3.6963403, z: 0.512522}
+  m_Center: {x: -0.023888469, y: 1.8596803, z: -1.2076472}
+--- !u!65 &1393078376952754079
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7870594375749247816}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.529703, y: 3.9113717, z: 0.3255303}
+  m_Center: {x: -0.028829098, y: 1.967196, z: -1.912649}
+--- !u!65 &6743608977985535038
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7870594375749247816}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.23123693, y: 3.996017, z: 1.9405713}
+  m_Center: {x: -2.6977036, y: 1.9980085, z: -0.8439244}
+--- !u!65 &1679955129542935365
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7870594375749247816}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.23123693, y: 3.996017, z: 1.9405713}
+  m_Center: {x: 2.697704, y: 1.9980085, z: -0.8439244}
+--- !u!65 &7064701197225518415
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7870594375749247816}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.62833, y: 0.19999981, z: 1.8614691}
+  m_Center: {x: -0.00086927414, y: 3.88, z: -0.81625456}
 --- !u!1001 &6940090309663155144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -125,10 +236,30 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8578827625446800467, guid: b33ea804ee9c3d74da4c9adf3440e569,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b33ea804ee9c3d74da4c9adf3440e569,
         type: 3}
       propertyPath: m_Name
       value: SoccerGoal
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b33ea804ee9c3d74da4c9adf3440e569,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009656263433138504, guid: b33ea804ee9c3d74da4c9adf3440e569,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059175557914410092, guid: b33ea804ee9c3d74da4c9adf3440e569,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
