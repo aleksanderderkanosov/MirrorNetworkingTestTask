@@ -375,6 +375,7 @@ MonoBehaviour:
   _raycastLayerMask:
     serializedVersion: 2
     m_Bits: 1
+  _barrelRenderer: {fileID: 7265150970500103223}
   _barrel: {fileID: 6589094344012105308}
   _barrelAimSmoothing: 10
   _barrelVerticalRotationConstraints: {x: -180, y: -90}
@@ -481,6 +482,12 @@ Transform:
 --- !u!4 &6589094344012105308 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2484921068739079471, guid: 97b26c735cb696941a0a461706dc49e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 500712171090269325}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7265150970500103223 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7071182760956848314, guid: 97b26c735cb696941a0a461706dc49e7,
     type: 3}
   m_PrefabInstance: {fileID: 500712171090269325}
   m_PrefabAsset: {fileID: 0}

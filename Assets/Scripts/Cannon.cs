@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour
 {
-    [SerializeField] private LayerMask _raycastLayerMask;
+    [SerializeField] private Renderer _barrelRenderer;
 
     [Header("Barrel settings")]
     [SerializeField] private Transform _barrel;
@@ -40,9 +40,13 @@ public class Cannon : MonoBehaviour
         yield return null;
     }
 
+    public void SetBarrelColor(Color barrelColor) {
+        _barrelRenderer.material.color = barrelColor;
+    }
+
     private void Rotate() {
         Ray ray = _playerCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, 100, _raycastLayerMask)) {
+        if (Physics.Raycast(ray, out RaycastHit hit, 100)) {
             Vector3 lookRotation = new Vector3(hit.point.x, transform.position.y, hit.point.z);
             transform.LookAt(lookRotation);
         }

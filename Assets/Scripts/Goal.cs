@@ -4,6 +4,7 @@ using UnityEngine;
 public class Goal : MonoBehaviour
 {
     [SerializeField] private Collider _goalTrigger;
+    [SerializeField] private Renderer _goalNetRenderer;
 
     [Header("Moving settings")]
     [SerializeField] private float _speed = 1.0f;
@@ -29,5 +30,9 @@ public class Goal : MonoBehaviour
         if (other.TryGetComponent(out Ball ball)) {
             Player.CmdGoal(ball.gameObject);
         }
+    }
+
+    public void SetNetColor(Color netColor) {
+        _goalNetRenderer.material.color = netColor;
     }
 }

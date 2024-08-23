@@ -386,7 +386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc0d76f8520bd84d94a2a8cdf9931a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2387206223786535930}
   _scoresText: {fileID: 8541095216713403273}
   _isVisibleOnLocal: 0
 --- !u!1 &5256048023926143915
@@ -542,12 +541,11 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  _playerCamera: {fileID: 3391131047059975716}
   _cannon: {fileID: 6362537268823450561}
   _goal: {fileID: 8856861462572306471}
-  _playerCamera: {fileID: 3391131047059975716}
   _ballPrefab: {fileID: 3791247129283461873, guid: 5303dae843d54344ea888f5e89aa986c,
     type: 3}
-  _commonScoresUi: {fileID: 3173746531975807323}
 --- !u!1 &6843788196311622513
 GameObject:
   m_ObjectHideFlags: 0

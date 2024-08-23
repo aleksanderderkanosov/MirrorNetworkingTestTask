@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _goalTrigger: {fileID: 2862308486643475315}
+  _goalNetRenderer: {fileID: 5790655847248236755}
   _speed: 3
   _movingXLimits: {x: -11, y: 11}
 --- !u!65 &2862308486643475315
@@ -266,6 +267,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b33ea804ee9c3d74da4c9adf3440e569, type: 3}
+--- !u!23 &5790655847248236755 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3462333037987984155, guid: b33ea804ee9c3d74da4c9adf3440e569,
+    type: 3}
+  m_PrefabInstance: {fileID: 6940090309663155144}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7483467594027435043 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b33ea804ee9c3d74da4c9adf3440e569,

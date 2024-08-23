@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class NetworkPlayer : NetworkBehaviour
 {
+    [SerializeField] private Camera _playerCamera;
     [SerializeField] private Cannon _cannon;
     [SerializeField] private Goal _goal;
-    [SerializeField] private Camera _playerCamera;
     [SerializeField] private Ball _ballPrefab;
 
-    [SyncVar(hook = nameof(UpdateScores))] 
+    [SyncVar(hook = nameof(UpdateScores))]
     private int _score = 0;
 
+    [SyncVar(hook = nameof(UpdateColor))]
+    private Color _playerColor = Color.clear;
+
     public int Score { get => _score; set => _score = value; }
+    public Color PlayerColor { get => _playerColor; set => _playerColor = value; }
     public Camera PlayerCamera { get => _playerCamera; set => _playerCamera = value; }
 
     public Action<int> OnScoresUpdates; 
@@ -45,7 +49,26 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void UpdateScores(int oldValue, int newValue) {
         OnScoresUpdates?.Invoke(newValue);
-    } 
+    }
+
+    private void UpdateColor(Color oldValue, Color newValue) {
+        _cannon.SetBarrelColor(newValue);
+        _goal.SetNetColor(newValue);
+    }
+
+    private void Update() {
+        if (!isLocalPlayer) {
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.R)) {
+            PlayerColor = Color.red;
+        }
+
+        if (Input.GetKeyDown(KeyCode.G)) {
+            PlayerColor = Color.green;
+        }
+    }
 
     [Command]
     public void CmdShoot(Vector3 origin, Vector3 force, NetworkConnectionToClient sender = null) {
