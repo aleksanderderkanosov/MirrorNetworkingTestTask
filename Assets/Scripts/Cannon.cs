@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour
 {
-    [SerializeField] private Camera _playerCamera;
-    [SerializeField] private NetworkPlayer _player;
     [SerializeField] private LayerMask _raycastLayerMask;
 
     [Header("Barrel settings")]
@@ -16,9 +14,18 @@ public class Cannon : MonoBehaviour
     [SerializeField] private Vector2 _shootForceLimits;
     [SerializeField] private float _forceIncreasePerSecond = 5.0f;
 
-
+    private NetworkPlayer _player;
+    private Camera _playerCamera;
     private float _targetVerticalRotation = 0.0f;
     private float _shootForce = 0.0f;
+
+    public NetworkPlayer Player { 
+        get => _player;
+        set {
+            _player = value;
+            _playerCamera = _player.PlayerCamera;
+        }
+    }
 
     private IEnumerator Start() {
         _shootForce = _shootForceLimits.x;
@@ -49,7 +56,7 @@ public class Cannon : MonoBehaviour
 
     private void Shoot() {
         if (Input.GetKeyUp(KeyCode.Mouse0)) {
-            _player.CmdShoot(_barrel.position, -_barrel.transform.up * _shootForce);
+            Player.CmdShoot(_barrel.position, -_barrel.transform.up * _shootForce);
             _shootForce = _shootForceLimits.x;
             return;
         }

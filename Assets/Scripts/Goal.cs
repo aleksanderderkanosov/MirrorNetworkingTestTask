@@ -3,12 +3,15 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    [SerializeField] private NetworkPlayer _player;
     [SerializeField] private Collider _goalTrigger;
 
     [Header("Moving settings")]
     [SerializeField] private float _speed = 1.0f;
     [SerializeField] private Vector2 _movingXLimits;
+
+    private NetworkPlayer _player;
+
+    public NetworkPlayer Player { get => _player; set => _player = value; }
 
     private IEnumerator Start() {
         _goalTrigger.enabled = true;
@@ -24,7 +27,7 @@ public class Goal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.TryGetComponent(out Ball ball)) {
-            _player.CmdGoal(ball.gameObject);
+            Player.CmdGoal(ball.gameObject);
         }
     }
 }

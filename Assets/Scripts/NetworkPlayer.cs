@@ -1,4 +1,5 @@
 using Mirror;
+using System;
 using UnityEngine;
 
 public class NetworkPlayer : NetworkBehaviour
@@ -8,34 +9,42 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private Camera _playerCamera;
     [SerializeField] private Ball _ballPrefab;
 
-    [SyncVar(hook = nameof(UpdateScores))] private int _score = 0;
+    [SyncVar(hook = nameof(UpdateScores))] 
+    private int _score = 0;
 
     public int Score { get => _score; set => _score = value; }
+    public Camera PlayerCamera { get => _playerCamera; set => _playerCamera = value; }
+
+    public Action<int> OnScoresUpdates; 
 
     public override void OnStartLocalPlayer() {
         base.OnStartLocalPlayer();
 
-        EnableComponentsOnLocalPlayer();
+        ToggleComponentsOnLocalPlayer(true);
         SetLayerForWall();
     }
 
-    private void EnableComponentsOnLocalPlayer() {
-        _cannon.enabled = true;
-        _goal.enabled = true;
-        _playerCamera.enabled = true;
-        _playerCamera.GetComponent<AudioListener>().enabled = true;
+    private void ToggleComponentsOnLocalPlayer(bool isEnabled) {
+        _cannon.Player = this;
+        _cannon.enabled = isEnabled;
+
+        _goal.Player = this;
+        _goal.enabled = isEnabled;
+
+        PlayerCamera.enabled = isEnabled;
+        PlayerCamera.GetComponent<AudioListener>().enabled = isEnabled;
     }
 
     private void SetLayerForWall() {
-        Vector3 direction = (_cannon.transform.position - _playerCamera.transform.position).normalized;
-        Ray ray = new Ray(_playerCamera.transform.position, direction);
+        Vector3 direction = (_cannon.transform.position - PlayerCamera.transform.position).normalized;
+        Ray ray = new Ray(PlayerCamera.transform.position, direction);
         if (Physics.Raycast(ray, out RaycastHit hit, 50)) {
             hit.collider.gameObject.layer = 2;
         }
     }
 
     private void UpdateScores(int oldValue, int newValue) {
-        print($"Scores: {newValue}");
+        OnScoresUpdates?.Invoke(newValue);
     } 
 
     [Command]
