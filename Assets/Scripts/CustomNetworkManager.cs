@@ -1,6 +1,9 @@
 using Mirror;
 using UnityEngine;
 
+/// <summary>
+/// NetworkManager with some overriden methods.
+/// </summary>
 public class CustomNetworkManager : NetworkManager
 {
     public override void OnServerAddPlayer(NetworkConnectionToClient conn) {
@@ -14,12 +17,14 @@ public class CustomNetworkManager : NetworkManager
         player.name = $"{playerPrefab.name} [connId={conn.connectionId}]";
         NetworkServer.AddPlayerForConnection(conn, player);
 
+        // Reserve a start position for the new player
         if (player.TryGetComponent(out NetworkPlayer networkPlayer)) {
             networkPlayer.SpawnPosition = startPos;
         }
     }
 
     public override void OnServerDisconnect(NetworkConnectionToClient conn) {
+        // Release the position of the disconnected player.
         if (conn.identity.TryGetComponent(out NetworkPlayer networkPlayer)) {
             networkPlayer.SpawnPosition = null;
         }

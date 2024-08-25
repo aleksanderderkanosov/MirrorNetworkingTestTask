@@ -167,7 +167,7 @@ MonoBehaviour:
   MaximizeSocketBuffers: 1
   ReliableMaxMessageSize: 294131
   UnreliableMaxMessageSize: 1181
-  debugLog: 0
+  debugLog: 1
   statisticsGUI: 0
   statisticsLog: 0
   relayAddress: 127.0.0.1
@@ -176,7 +176,7 @@ MonoBehaviour:
   relayGUI: 0
   userId: 11111111
   sessionId: 22222222
-  lobbyUrl: https://mir-634bb7ce160318.edgegap.net
+  lobbyUrl: https://lobby-cf1d26465279ee.edgegap.net
   lobbyWaitTimeout: 60
 --- !u!114 &149220147
 MonoBehaviour:
@@ -877,7 +877,7 @@ PrefabInstance:
     - target: {fileID: 1813424391612798255, guid: ebc1436948da70b4abbf74f58106c318,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 186.78732
+      value: 159.60881
       objectReference: {fileID: 0}
     - target: {fileID: 1813424391612798255, guid: ebc1436948da70b4abbf74f58106c318,
         type: 3}
@@ -887,7 +887,7 @@ PrefabInstance:
     - target: {fileID: 1813424391612798255, guid: ebc1436948da70b4abbf74f58106c318,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 108.39366
+      value: 94.804405
       objectReference: {fileID: 0}
     - target: {fileID: 1813424391612798255, guid: ebc1436948da70b4abbf74f58106c318,
         type: 3}

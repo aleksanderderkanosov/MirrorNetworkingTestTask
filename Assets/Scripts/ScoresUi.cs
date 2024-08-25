@@ -1,9 +1,14 @@
 using UnityEngine;
 
+/// <summary>
+/// Describes the player's scoreboard.
+/// </summary>
 public class ScoresUi : MonoBehaviour
 {
     [SerializeField] private TMPro.TMP_Text _scoresText;
+    [Tooltip("Is this scoreboard visible to the local player?")]
     [SerializeField] private bool _isVisibleOnLocal;
+
     private NetworkPlayer _player;
 
     private void OnEnable() {
