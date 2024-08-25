@@ -28,8 +28,7 @@ public class NetworkPlayer : NetworkBehaviour
     public Transform SpawnPosition {
         get => _spawnPosition;
         set {
-            NetworkManager.UnRegisterStartPosition(value);
-            if (_spawnPosition != null) {
+            if (_spawnPosition != null && _spawnPosition != value) {
                 NetworkManager.RegisterStartPosition(_spawnPosition);
             }
             

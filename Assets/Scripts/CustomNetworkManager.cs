@@ -1,4 +1,5 @@
 using Mirror;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -8,6 +9,7 @@ public class CustomNetworkManager : NetworkManager
 {
     public override void OnServerAddPlayer(NetworkConnectionToClient conn) {
         Transform startPos = GetStartPosition();
+        UnRegisterStartPosition(startPos);
         GameObject player = startPos != null
             ? Instantiate(playerPrefab, startPos.position, startPos.rotation)
             : Instantiate(playerPrefab);
@@ -30,5 +32,20 @@ public class CustomNetworkManager : NetworkManager
         }
 
         base.OnServerDisconnect(conn);
+    }
+
+    public override Transform GetStartPosition() {
+        // first remove any dead transforms
+        startPositions.RemoveAll(t => t == null);
+
+        if (startPositions.Count == 0)
+            return null;
+
+        if (playerSpawnMethod == PlayerSpawnMethod.Random) {
+            return startPositions[Random.Range(0, startPositions.Count)];
+        }
+        else {
+            return startPositions.FirstOrDefault();
+        }
     }
 }
