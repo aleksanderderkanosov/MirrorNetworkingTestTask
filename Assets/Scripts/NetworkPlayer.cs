@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NetworkPlayer : NetworkBehaviour
 {
+    [Header("Components")]
     [SerializeField] private Camera _playerCamera;
     [SerializeField] private Cannon _cannon;
     [SerializeField] private Goal _goal;
@@ -15,9 +16,22 @@ public class NetworkPlayer : NetworkBehaviour
     [SyncVar(hook = nameof(UpdateColor))]
     private Color _playerColor = Color.clear;
 
+    private Transform _spawnPosition;
+
     public int Score { get => _score; set => _score = value; }
     public Color PlayerColor { get => _playerColor; set => _playerColor = value; }
     public Camera PlayerCamera { get => _playerCamera; set => _playerCamera = value; }
+    public Transform SpawnPosition {
+        get => _spawnPosition;
+        set {
+            NetworkManager.UnRegisterStartPosition(value);
+            if (_spawnPosition != null) {
+                NetworkManager.RegisterStartPosition(_spawnPosition);
+            }
+            
+            _spawnPosition = value;
+        }
+    }
 
     public Action<int> OnScoresUpdates; 
 
@@ -25,7 +39,13 @@ public class NetworkPlayer : NetworkBehaviour
         base.OnStartLocalPlayer();
 
         ToggleComponentsOnLocalPlayer(true);
-        SetLayerForWall();
+        SetLayerForWall(3);
+    }
+
+    public override void OnStopLocalPlayer() {
+        base.OnStopLocalPlayer();
+
+        SetLayerForWall(0);
     }
 
     private void ToggleComponentsOnLocalPlayer(bool isEnabled) {
@@ -39,11 +59,11 @@ public class NetworkPlayer : NetworkBehaviour
         PlayerCamera.GetComponent<AudioListener>().enabled = isEnabled;
     }
 
-    private void SetLayerForWall() {
+    private void SetLayerForWall(int layer) {
         Vector3 direction = (_cannon.transform.position - PlayerCamera.transform.position).normalized;
         Ray ray = new Ray(PlayerCamera.transform.position, direction);
         if (Physics.Raycast(ray, out RaycastHit hit, 50)) {
-            hit.collider.gameObject.layer = 2;
+            hit.collider.gameObject.layer = layer;
         }
     }
 
@@ -54,20 +74,6 @@ public class NetworkPlayer : NetworkBehaviour
     private void UpdateColor(Color oldValue, Color newValue) {
         _cannon.SetBarrelColor(newValue);
         _goal.SetNetColor(newValue);
-    }
-
-    private void Update() {
-        if (!isLocalPlayer) {
-            return;
-        }
-
-        if (Input.GetKeyDown(KeyCode.R)) {
-            PlayerColor = Color.red;
-        }
-
-        if (Input.GetKeyDown(KeyCode.G)) {
-            PlayerColor = Color.green;
-        }
     }
 
     [Command]

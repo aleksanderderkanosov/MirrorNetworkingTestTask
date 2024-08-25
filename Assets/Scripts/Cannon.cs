@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour
 {
-    [SerializeField] private Renderer _barrelRenderer;
+    [SerializeField] private LayerMask _cameraToMouseRayMask;
 
     [Header("Barrel settings")]
     [SerializeField] private Transform _barrel;
+    [SerializeField] private Renderer _barrelRenderer;
     [SerializeField] private float _barrelAimSmoothing = 10.0f;
     [SerializeField] private Vector2 _barrelVerticalRotationConstraints;
 
@@ -46,7 +47,7 @@ public class Cannon : MonoBehaviour
 
     private void Rotate() {
         Ray ray = _playerCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, 100)) {
+        if (Physics.Raycast(ray, out RaycastHit hit, 100, _cameraToMouseRayMask)) {
             Vector3 lookRotation = new Vector3(hit.point.x, transform.position.y, hit.point.z);
             transform.LookAt(lookRotation);
         }

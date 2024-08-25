@@ -176,7 +176,7 @@ MonoBehaviour:
   relayGUI: 0
   userId: 11111111
   sessionId: 22222222
-  lobbyUrl: https://edge-070a1ebfae0e02.edgegap.net
+  lobbyUrl: https://mir-634bb7ce160318.edgegap.net
   lobbyWaitTimeout: 60
 --- !u!114 &149220147
 MonoBehaviour:
@@ -225,7 +225,8 @@ MonoBehaviour:
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 1
-  spawnPrefabs: []
+  spawnPrefabs:
+  - {fileID: 6276607424656864224, guid: 5303dae843d54344ea888f5e89aa986c, type: 3}
   exceptionsDisconnect: 0
   snapshotSettings:
     bufferTimeMultiplier: 2
@@ -731,148 +732,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1520176765
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1520176770}
-  - component: {fileID: 1520176769}
-  - component: {fileID: 1520176768}
-  - component: {fileID: 1520176767}
-  - component: {fileID: 1520176766}
-  m_Layer: 0
-  m_Name: NetworkManager (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1520176766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520176765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc654f29862fc2643b948f772ebb9e68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: {r: 1, g: 1, b: 1, a: 1}
-  padding: 2
-  width: 180
-  height: 25
---- !u!114 &1520176767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520176765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b0fecffa3f624585964b0d0eb21b18e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  port: 7777
-  DualMode: 1
-  NoDelay: 1
-  Interval: 10
-  Timeout: 10000
-  RecvBufferSize: 7361536
-  SendBufferSize: 7361536
-  FastResend: 2
-  ReceiveWindowSize: 4096
-  SendWindowSize: 4096
-  MaxRetransmit: 40
-  MaximizeSocketBuffers: 1
-  ReliableMaxMessageSize: 297433
-  UnreliableMaxMessageSize: 1194
-  debugLog: 0
-  statisticsGUI: 0
-  statisticsLog: 0
---- !u!114 &1520176768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520176765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offsetX: 0
-  offsetY: 0
---- !u!114 &1520176769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520176765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aab4c8111b7c411b9b92cf3dbc5bd4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 1
-  runInBackground: 1
-  headlessStartMode: 1
-  editorAutoStart: 0
-  sendRate: 120
-  autoStartServerBuild: 0
-  autoConnectClientBuild: 0
-  offlineScene: 
-  onlineScene: 
-  transport: {fileID: 1520176767}
-  networkAddress: localhost
-  maxConnections: 100
-  disconnectInactiveConnections: 0
-  disconnectInactiveTimeout: 60
-  authenticator: {fileID: 0}
-  playerPrefab: {fileID: 6631984620412745397, guid: 918877e15ff5d834fbc5ea171370b310,
-    type: 3}
-  autoCreatePlayer: 1
-  playerSpawnMethod: 1
-  spawnPrefabs:
-  - {fileID: 6276607424656864224, guid: 5303dae843d54344ea888f5e89aa986c, type: 3}
-  exceptionsDisconnect: 1
-  snapshotSettings:
-    bufferTimeMultiplier: 2
-    bufferLimit: 32
-    catchupNegativeThreshold: -1
-    catchupPositiveThreshold: 1
-    catchupSpeed: 0.019999999552965164
-    slowdownSpeed: 0.03999999910593033
-    driftEmaDuration: 1
-    dynamicAdjustment: 1
-    dynamicAdjustmentTolerance: 1
-    deliveryTimeEmaDuration: 2
-  evaluationMethod: 0
-  evaluationInterval: 3
-  timeInterpolationGui: 1
---- !u!4 &1520176770
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520176765}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1680146771
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,12 +857,12 @@ PrefabInstance:
     - target: {fileID: 1813424391464433542, guid: ebc1436948da70b4abbf74f58106c318,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000051498413
+      value: -0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 1813424391464433542, guid: ebc1436948da70b4abbf74f58106c318,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0000371933
+      value: -0.000056910794
       objectReference: {fileID: 0}
     - target: {fileID: 1813424391612798255, guid: ebc1436948da70b4abbf74f58106c318,
         type: 3}
@@ -1018,7 +877,7 @@ PrefabInstance:
     - target: {fileID: 1813424391612798255, guid: ebc1436948da70b4abbf74f58106c318,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 181.68225
+      value: 186.78732
       objectReference: {fileID: 0}
     - target: {fileID: 1813424391612798255, guid: ebc1436948da70b4abbf74f58106c318,
         type: 3}
@@ -1028,7 +887,7 @@ PrefabInstance:
     - target: {fileID: 1813424391612798255, guid: ebc1436948da70b4abbf74f58106c318,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 105.841125
+      value: 108.39366
       objectReference: {fileID: 0}
     - target: {fileID: 1813424391612798255, guid: ebc1436948da70b4abbf74f58106c318,
         type: 3}
@@ -1348,4 +1207,3 @@ SceneRoots:
   - {fileID: 607576539}
   - {fileID: 1824508252}
   - {fileID: 1999184444}
-  - {fileID: 1520176770}

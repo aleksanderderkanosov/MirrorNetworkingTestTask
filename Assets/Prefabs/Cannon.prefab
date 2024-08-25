@@ -372,11 +372,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5846dd25c480c439c8101ec966c398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _raycastLayerMask:
+  _cameraToMouseRayMask:
     serializedVersion: 2
     m_Bits: 1
-  _barrelRenderer: {fileID: 7265150970500103223}
   _barrel: {fileID: 6589094344012105308}
+  _barrelRenderer: {fileID: 7265150970500103223}
   _barrelAimSmoothing: 10
   _barrelVerticalRotationConstraints: {x: -180, y: -90}
   _shootForceLimits: {x: 15, y: 40}
